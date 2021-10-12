@@ -1,0 +1,22 @@
+var canvas = document.getElementById("lab3");
+    var ctx = canvas.getContext("2d");
+
+    var state = 0;
+    var polygon_start_x_tmp, polygon_start_y_tmp;
+    var polygon_start_x, polygon_start_y;
+    var polygon_end_x, polygon_end_y;
+    var line_start_x, line_start_y;
+    var line_end_x, line_end_y;
+    var polygon_lines = new Map()
+
+canvas.addEventListener('contextmenu', function (event) {
+    if (state == 1) {
+        DrawLine(ctx, polygon_start_x_tmp, polygon_start_y_tmp, polygon_start_x, polygon_start_y);
+        console.log(polygon_start_x_tmp, polygon_start_y_tmp, polygon_start_x, polygon_start_y);
+        polygon_lines.set([polygon_start_x_tmp, polygon_start_y_tmp], [polygon_start_x, polygon_start_y])
+        console.log(polygon_lines);
+        state = 2;
+    } else {
+        console.log("c_X = " + event.offsetX + ' c_Y= ' + event.offsetY)
+    }
+});
